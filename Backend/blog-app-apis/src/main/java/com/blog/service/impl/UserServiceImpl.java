@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.blog.dtos.UserDto;
 import com.blog.entities.UserEntity;
 import com.blog.exceptions.ResourceNotFoundException;
-import com.blog.interfaces.UserRepo;
+import com.blog.repoInterfaces.UserRepo;
 import com.blog.responseModel.UserResponse;
 import com.blog.service.UserService;
 

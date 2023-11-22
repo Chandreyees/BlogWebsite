@@ -1,7 +1,6 @@
 package com.blog.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,44 +14,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blog.dtos.UserDto;
+import com.blog.dtos.CategoryDto;
 import com.blog.responseModel.ApiResponseModel;
-import com.blog.responseModel.UserResponse;
-import com.blog.service.UserService;
+import com.blog.service.CategoryService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/blog/users")
-public class UserController {
+@RequestMapping("blog/category")
+public class CategoryController {
 	
 	@Autowired
-	private UserService userService;
+	CategoryService categoryService;
 	
 	@PostMapping("/")
-	public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserDto userReq){
-		return ResponseEntity.ok(userService.createUser(userReq));		
+	public ResponseEntity<CategoryDto> createCategory(@Valid @RequestBody CategoryDto categoryReq){
+		return ResponseEntity.ok(categoryService.createCategory(categoryReq));		
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<UserResponse> updateUserDetails(@PathVariable String id,@Valid @RequestBody UserDto userDto){
-		return ResponseEntity.ok(userService.updateUser(Integer.parseInt(id),userDto));		
+	public ResponseEntity<CategoryDto> updateCategory(@PathVariable String id,@Valid @RequestBody CategoryDto categoryReq){
+		return ResponseEntity.ok(categoryService.updateCategory(categoryReq, Integer.parseInt(id)));		
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<UserResponse> getUserDetails(@PathVariable String id){
-		return ResponseEntity.ok(userService.getUserById(Integer.parseInt(id)));		
+	public ResponseEntity<CategoryDto> getCategory(@PathVariable String id){
+		return ResponseEntity.ok(categoryService.getCategoryDto(Integer.parseInt(id)));		
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<UserResponse>> getAllUserDetails(){
-		return ResponseEntity.ok(userService.getAllUsers());		
+	public ResponseEntity<List<CategoryDto>> getAllCategories(){
+		return ResponseEntity.ok(categoryService.getAllCategories());		
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<ApiResponseModel> deleteUserDetails(@PathVariable String id){
+	public ResponseEntity<ApiResponseModel> deleteCategorie(@PathVariable String id){
 		try {
-			userService.deleteUser(Integer.parseInt(id));
+			categoryService.deleteUser(Integer.parseInt(id));
 		}  catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity(new ApiResponseModel("Invalid id", false),HttpStatus.CONFLICT);

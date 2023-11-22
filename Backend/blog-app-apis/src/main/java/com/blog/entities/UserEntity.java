@@ -1,10 +1,15 @@
 package com.blog.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,6 +26,8 @@ public class UserEntity {
 	private String password;
 	@Column(name = "ABOUT")
 	private String about;
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	private List<PostEntity> posts = new ArrayList<>();
 	
 	public UserEntity() {
 		super();
