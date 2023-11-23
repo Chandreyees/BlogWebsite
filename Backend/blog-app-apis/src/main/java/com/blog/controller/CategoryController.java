@@ -50,7 +50,7 @@ public class CategoryController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ApiResponseModel> deleteCategorie(@PathVariable String id){
 		try {
-			categoryService.deleteUser(Integer.parseInt(id));
+			categoryService.deleteCategory(Integer.parseInt(id));
 		}  catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity(new ApiResponseModel("Invalid id", false),HttpStatus.CONFLICT);

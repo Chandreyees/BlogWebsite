@@ -6,7 +6,7 @@ import com.blog.dtos.PostDto;
 
 public interface PostService {
 	
-	PostDto createPost(PostDto postReq);
+	PostDto createPost(PostDto postReq,Integer userId,Integer categoryId);
 	PostDto updatePost(PostDto req, Integer postId);
 	void deletePost(Integer id);
 	List<PostDto> getAllPost();

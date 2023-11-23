@@ -45,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
-	public void deleteUser(Integer categoryId) {
+	public void deleteCategory(Integer categoryId) {
 		CategoryEntity categoryEntity = repo.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category", "CategoryId", Long.valueOf(categoryId)));
 		repo.delete(categoryEntity);
 		logger.info("Category deleted with id : {}", categoryEntity.getCategoryId());

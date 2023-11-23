@@ -8,7 +8,7 @@ public interface CategoryService {
 	
 	CategoryDto createCategory(CategoryDto categoryDto);
 	CategoryDto updateCategory(CategoryDto categoryDto, Integer id);
-	void deleteUser(Integer categoryId);
+	void deleteCategory(Integer categoryId);
 	CategoryDto getCategoryDto(Integer categoryId);
 	List<CategoryDto> getAllCategories();
 

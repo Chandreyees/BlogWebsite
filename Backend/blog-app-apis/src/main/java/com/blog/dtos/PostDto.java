@@ -2,8 +2,7 @@ package com.blog.dtos;
 
 import java.util.Date;
 
-import com.blog.entities.CategoryEntity;
-import com.blog.entities.UserEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,4 +15,10 @@ public class PostDto {
 	
 	private String title;
 	private String content;
+	@JsonProperty(value ="image_url")
+	private String imageUrl;
+	private UserDto user;
+	private CategoryDto category;
+	private Date addedDate;
+	
 }
